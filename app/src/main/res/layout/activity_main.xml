@@ -14,7 +14,7 @@
         android:contentDescription="@string/description_post_author_avatar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@sample/posts_avatars" />
+        tools:srcCompat="@sample/posts_avatars" />
 
     <TextView
         android:id="@+id/author"
@@ -23,23 +23,23 @@
         android:layout_marginHorizontal="@dimen/margin_default"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="@sample/posts.json/data/author"
         app:layout_constraintBottom_toBottomOf="@id/avatar"
         app:layout_constraintBottom_toTopOf="@id/published"
         app:layout_constraintEnd_toStartOf="@id/menu"
         app:layout_constraintStart_toEndOf="@id/avatar"
         app:layout_constraintTop_toTopOf="@id/avatar"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="@sample/posts.json/data/author" />
 
     <TextView
         android:id="@+id/published"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_default"
-        android:text="@sample/posts.json/data/published"
         app:layout_constraintBottom_toBottomOf="@id/avatar"
         app:layout_constraintStart_toEndOf="@id/avatar"
-        app:layout_constraintTop_toBottomOf="@id/author" />
+        app:layout_constraintTop_toBottomOf="@id/author"
+        tools:text="@sample/posts.json/data/published" />
 
     <ImageButton
         android:id="@+id/menu"
@@ -65,8 +65,8 @@
         android:layout_height="wrap_content"
         android:autoLink="web"
         android:padding="@dimen/margin_default"
-        android:text="@sample/posts.json/data/content"
-        app:layout_constraintTop_toTopOf="@id/barrierTop" />
+        app:layout_constraintTop_toTopOf="@id/barrierTop"
+        tools:text="@sample/posts.json/data/content" />
 
     <ImageView
         android:id="@+id/likes"
@@ -74,9 +74,9 @@
         android:layout_height="@dimen/action_size"
         android:layout_margin="@dimen/margin_default"
         android:contentDescription="@string/description_like"
+        android:src="@drawable/ic_likes_24"
         app:layout_constraintStart_toStartOf="@id/content"
-        app:layout_constraintTop_toBottomOf="@id/content"
-        app:srcCompat="@drawable/ic_likes_24" />
+        app:layout_constraintTop_toBottomOf="@id/content" />
 
     <TextView
         android:id="@+id/likes_count"
@@ -84,9 +84,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_counter"
         android:layout_marginVertical="@dimen/margin_default"
-        android:text="@sample/posts.json/data/likes"
         app:layout_constraintStart_toEndOf="@id/likes"
-        app:layout_constraintTop_toBottomOf="@id/content" />
+        app:layout_constraintTop_toBottomOf="@id/content"
+        tools:text="@sample/posts.json/data/likes"/>
 
     <ImageView
         android:id="@+id/share"
@@ -94,9 +94,9 @@
         android:layout_height="@dimen/action_size"
         android:layout_margin="@dimen/margin_default"
         android:contentDescription="@string/description_share"
+        android:src="@drawable/ic_share_24"
         app:layout_constraintStart_toEndOf="@id/likes_count"
-        app:layout_constraintTop_toBottomOf="@id/content"
-        app:srcCompat="@drawable/ic_share_24" />
+        app:layout_constraintTop_toBottomOf="@id/content" />
 
     <TextView
         android:id="@+id/share_count"
@@ -104,29 +104,29 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_counter"
         android:layout_marginVertical="@dimen/margin_default"
-        android:text="@sample/posts.json/data/shares"
         app:layout_constraintStart_toEndOf="@id/share"
-        app:layout_constraintTop_toBottomOf="@id/content" />
+        app:layout_constraintTop_toBottomOf="@id/content"
+        tools:text="@sample/posts.json/data/shares" />
 
     <TextView
         android:id="@+id/seen_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/margin_default"
         android:layout_marginVertical="@dimen/margin_default"
-        android:text="@sample/posts.json/data/seen"
+        android:layout_marginEnd="@dimen/margin_default"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/content" />
+        app:layout_constraintTop_toBottomOf="@id/content"
+        tools:text="@sample/posts.json/data/seen" />
 
     <ImageView
         android:id="@+id/seen"
         android:layout_width="@dimen/action_size"
         android:layout_height="@dimen/action_size"
-        android:layout_marginEnd="@dimen/margin_counter"
         android:layout_marginVertical="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_counter"
         android:contentDescription="@string/description_share"
+        android:src="@drawable/ic_seen_24"
         app:layout_constraintEnd_toStartOf="@id/seen_count"
-        app:layout_constraintTop_toBottomOf="@id/content"
-        app:srcCompat="@drawable/ic_seen_24" />
+        app:layout_constraintTop_toBottomOf="@id/content" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
