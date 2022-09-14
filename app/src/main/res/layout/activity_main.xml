@@ -69,24 +69,24 @@
         tools:text="@sample/posts.json/data/content" />
 
     <ImageView
-        android:id="@+id/likes"
+        android:id="@+id/like"
         android:layout_width="@dimen/action_size"
         android:layout_height="@dimen/action_size"
         android:layout_margin="@dimen/margin_default"
         android:contentDescription="@string/description_like"
-        android:src="@drawable/ic_likes_24"
+        android:src="@drawable/ic_like_24"
         app:layout_constraintStart_toStartOf="@id/content"
         app:layout_constraintTop_toBottomOf="@id/content" />
 
     <TextView
-        android:id="@+id/likes_count"
+        android:id="@+id/likeCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_counter"
         android:layout_marginVertical="@dimen/margin_default"
-        app:layout_constraintStart_toEndOf="@id/likes"
+        app:layout_constraintStart_toEndOf="@id/like"
         app:layout_constraintTop_toBottomOf="@id/content"
-        tools:text="@sample/posts.json/data/likes"/>
+        tools:text="10"/>
 
     <ImageView
         android:id="@+id/share"
@@ -95,38 +95,38 @@
         android:layout_margin="@dimen/margin_default"
         android:contentDescription="@string/description_share"
         android:src="@drawable/ic_share_24"
-        app:layout_constraintStart_toEndOf="@id/likes_count"
+        app:layout_constraintStart_toEndOf="@id/likeCount"
         app:layout_constraintTop_toBottomOf="@id/content" />
 
     <TextView
-        android:id="@+id/share_count"
+        android:id="@+id/shareCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_counter"
         android:layout_marginVertical="@dimen/margin_default"
         app:layout_constraintStart_toEndOf="@id/share"
         app:layout_constraintTop_toBottomOf="@id/content"
-        tools:text="@sample/posts.json/data/shares" />
+        tools:text="10" />
 
     <TextView
-        android:id="@+id/seen_count"
+        android:id="@+id/viewsCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/margin_default"
         android:layout_marginEnd="@dimen/margin_default"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/content"
-        tools:text="@sample/posts.json/data/seen" />
+        tools:text="5" />
 
     <ImageView
-        android:id="@+id/seen"
+        android:id="@+id/views"
         android:layout_width="@dimen/action_size"
         android:layout_height="@dimen/action_size"
         android:layout_marginVertical="@dimen/margin_default"
         android:layout_marginEnd="@dimen/margin_counter"
         android:contentDescription="@string/description_share"
         android:src="@drawable/ic_seen_24"
-        app:layout_constraintEnd_toStartOf="@id/seen_count"
+        app:layout_constraintEnd_toStartOf="@id/viewsCount"
         app:layout_constraintTop_toBottomOf="@id/content" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
