@@ -1,4 +1,4 @@
-package ru.netology.nmedia
+package ru.netology.nmedia.adapter
 
 fun formatNumber(count: Int): String {
     return when {
