@@ -3,8 +3,8 @@ package ru.netology.nmedia.adapter
 fun formatNumber(count: Int): String {
     return when {
         count < 1000 -> count.toString()
-        count in 1000 .. 9999 -> format(count, 1000.0, "K")
-        count in 10000 .. 999999 -> formatInt(count, "K")
+        count in 1000..9999 -> format(count, 1000.0, "K")
+        count in 10000..999999 -> formatInt(count, "K")
         else -> format(count, 1_000_000.0, "M")
     }
 }
