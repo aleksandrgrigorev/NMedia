@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     viewModel.changeContent(text.toString())
                     viewModel.save()
-                    binding.editGroup.visibility = android.view.View.GONE
+                    binding.editGroup.visibility = View.GONE
                     setText("")
                     clearFocus()
                     AndroidUtils.hideKeyboard(this)
@@ -89,10 +89,11 @@ class MainActivity : AppCompatActivity() {
         }
         binding.cancelEdit.setOnClickListener {
             with(binding.content) {
-                binding.editGroup.visibility = android.view.View.GONE
+                binding.editGroup.visibility = View.GONE
                 setText("")
                 clearFocus()
                 AndroidUtils.hideKeyboard(this)
+                viewModel.resetValue()
             }
         }
     }
