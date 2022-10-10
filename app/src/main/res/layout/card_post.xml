@@ -66,6 +66,7 @@
         android:autoLink="web"
         android:padding="@dimen/margin_default"
         app:layout_constraintTop_toTopOf="@id/barrierTop"
+        tools:layout_editor_absoluteX="16dp"
         tools:text="@sample/posts.json/data/content" />
 
     <ImageView
