@@ -65,6 +65,18 @@ class PostViewHolder(
                     }
                 }.show()
             }
+
+            if (post.video != null) {
+                videoGroup.visibility = View.VISIBLE
+            }
+
+            play.setOnClickListener {
+                onInteractionListener.onPlay(post)
+            }
+
+            videoPreview.setOnClickListener {
+                onInteractionListener.onPlay(post)
+            }
         }
     }
 }
