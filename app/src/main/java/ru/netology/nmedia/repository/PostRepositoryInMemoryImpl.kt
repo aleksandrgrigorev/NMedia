@@ -77,7 +77,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
     override fun getAll(): LiveData<List<Post>> = data
 
     override fun save(post: Post) {
-        data.value = if (post.id == 0L) {
+        posts = if (post.id == 0L) {
             // TODO: remove hardcoded author & published
             listOf(
                 post.copy(
@@ -92,6 +92,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
                 if (it.id != post.id) it else it.copy(content = post.content)
             }
         }
+        data.value = posts
     }
 
     override fun likeById(id: Long) {

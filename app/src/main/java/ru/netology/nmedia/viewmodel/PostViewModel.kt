@@ -19,23 +19,19 @@ class PostViewModel : ViewModel() {
     val data = repository.getAll()
     val edited = MutableLiveData(empty)
 
-    fun save() {
-        edited.value?.let {
-            repository.save(it)
-        }
-        resetValue()
-    }
-
     fun edit(post: Post) {
         edited.value = post
     }
 
-    fun changeContent(content: String) {
+    fun changeContentAndSave(content: String) {
         val text = content.trim()
         if (edited.value?.content == text) {
             return
         }
-        edited.value = edited.value?.copy(content = text)
+        edited.value?.let {
+            repository.save(it.copy(content = text))
+        }
+        resetValue()
     }
 
     fun resetValue() {
