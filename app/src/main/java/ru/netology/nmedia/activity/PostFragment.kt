@@ -11,23 +11,22 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ru.netology.nmedia.R
 import ru.netology.nmedia.adapter.OnInteractionListener
-import ru.netology.nmedia.adapter.PostsAdapter
-import ru.netology.nmedia.databinding.FragmentFeedBinding
+import ru.netology.nmedia.adapter.PostViewHolder
+import ru.netology.nmedia.databinding.FragmentPostBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.viewmodel.PostViewModel
 
-class FeedFragment : Fragment() {
+class PostFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentFeedBinding.inflate(inflater, container, false)
-
+        val binding = FragmentPostBinding.inflate(inflater, container, false)
         val viewModel by viewModels<PostViewModel>(ownerProducer = ::requireParentFragment)
 
-        val adapter = PostsAdapter(object : OnInteractionListener {
+        val viewHolder = PostViewHolder(binding.post, object: OnInteractionListener {
             override fun onEdit(post: Post) {
                 viewModel.edit(post)
             }
@@ -38,6 +37,7 @@ class FeedFragment : Fragment() {
 
             override fun onRemove(post: Post) {
                 viewModel.removeById(post.id)
+                findNavController().navigateUp()
             }
 
             override fun onShare(post: Post) {
@@ -58,21 +58,15 @@ class FeedFragment : Fragment() {
                 val playIntent = Intent.createChooser(intent, getString(R.string.video))
                 startActivity(playIntent)
             }
-
-            override fun onPostFragment(post: Post) {
-                findNavController().navigate(R.id.action_feedFragment_to_postFragment)
-            }
         })
-        binding.list.adapter = adapter
 
-        viewModel.data.observe(viewLifecycleOwner) { posts ->
-            adapter.submitList(posts)
-        }
-
-        binding.add.setOnClickListener {
-            findNavController().navigate(R.id.action_feedFragment_to_newPostFragment)
-        }
-
+//        viewModel.data.observe(viewLifecycleOwner) { posts ->
+//            val post = posts.find { it.id == postId } ?: run {
+//                findNavController().navigateUp()
+//                return@observe
+//            }
+//            viewHolder.bind(post)
+//        }
         return binding.root
     }
 }

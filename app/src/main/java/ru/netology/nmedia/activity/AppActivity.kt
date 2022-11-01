@@ -2,9 +2,7 @@ package ru.netology.nmedia.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.snackbar.Snackbar
 import ru.netology.nmedia.R
@@ -35,8 +33,10 @@ class AppActivity : AppCompatActivity() {
                     .show()
                 return@let
             }
+
             val navHostFragment =
                 supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
+
             navHostFragment.navController.navigate(
                 R.id.action_feedFragment_to_newPostFragment,
                 Bundle().apply { textArg = text }
