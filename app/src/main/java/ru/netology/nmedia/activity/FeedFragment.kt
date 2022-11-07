@@ -33,6 +33,11 @@ class FeedFragment : Fragment() {
         val adapter = PostsAdapter(object : OnInteractionListener {
             override fun onEdit(post: Post) {
                 viewModel.edit(post)
+                findNavController().navigate(R.id.action_feedFragment_to_newPostFragment,
+                    Bundle().apply {
+                        textArg = post.content
+                    }
+                )
             }
 
             override fun onLike(post: Post) {
@@ -64,7 +69,7 @@ class FeedFragment : Fragment() {
 
             override fun onPostFragment(post: Post) {
                 findNavController().navigate(R.id.action_feedFragment_to_postFragment,
-                    Bundle().apply { idArg = post.id } )
+                    Bundle().apply { idArg = post.id })
             }
         })
         binding.list.adapter = adapter
