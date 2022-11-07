@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ru.netology.nmedia.R
+import ru.netology.nmedia.activity.FeedFragment.Companion.idArg
 import ru.netology.nmedia.adapter.OnInteractionListener
 import ru.netology.nmedia.adapter.PostViewHolder
 import ru.netology.nmedia.databinding.FragmentPostBinding
@@ -60,13 +61,14 @@ class PostFragment : Fragment() {
             }
         })
 
-//        viewModel.data.observe(viewLifecycleOwner) { posts ->
-//            val post = posts.find { it.id == postId } ?: run {
-//                findNavController().navigateUp()
-//                return@observe
-//            }
-//            viewHolder.bind(post)
-//        }
+        viewModel.data.observe(viewLifecycleOwner) { posts ->
+            val postId = arguments?.idArg ?: -1
+            val post = posts.find { it.id == postId } ?: run {
+                findNavController().navigateUp()
+                return@observe
+            }
+            viewHolder.bind(post)
+        }
         return binding.root
     }
 }
