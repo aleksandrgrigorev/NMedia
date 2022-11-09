@@ -13,7 +13,7 @@ private val empty = Post(
     content = "",
     author = "",
     likedByMe = false,
-    published = ""
+    published = "",
 )
 
 class PostViewModel(application: Application) : AndroidViewModel(application) {
