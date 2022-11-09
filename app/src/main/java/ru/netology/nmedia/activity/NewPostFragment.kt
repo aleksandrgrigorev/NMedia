@@ -1,5 +1,6 @@
 package ru.netology.nmedia.activity
 
+import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
+import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.FragmentNewPostBinding
 import ru.netology.nmedia.util.StringArg
 import ru.netology.nmedia.viewmodel.PostViewModel
@@ -27,8 +30,10 @@ class NewPostFragment : Fragment() {
 
         binding.ok.setOnClickListener {
             val text = binding.content.text.toString()
-            viewModel.changeContentAndSave(text)
-            findNavController().navigateUp()
+            if (text.isNotBlank()) {
+                viewModel.changeContentAndSave(text)
+                findNavController().navigateUp()
+            }
         }
         return binding.root
     }
