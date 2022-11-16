@@ -15,4 +15,7 @@
     <string name="chooser_share_post">Поделиться</string>
     <string name="add_post">Добавить</string>
     <string name="video">Смотреть</string>
+    <string name="channel_remote_description">Уведомления с удалённого сервера</string>
+    <string name="channel_remote_name">Уведомления с сервера</string>
+    <string name="notification_user_liked">%1$s поставил лайк посту %2$s</string>
 </resources>
