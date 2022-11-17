@@ -34,8 +34,16 @@ class FCMService : FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         println(Gson().toJson(remoteMessage))
         remoteMessage.data["action"]?.let {
-            when (Action.valueOf(it)) {
-                Action.LIKE -> handleLike(Gson().fromJson(remoteMessage.data["content"], Like::class.java))
+            when (it) {
+                "LIKE" -> {
+                    handleLike(Gson().fromJson(remoteMessage.data["content"], Like::class.java))
+                }
+                "POST" -> {
+                    handlePost(Gson().fromJson(remoteMessage.data["content"], Post::class.java))
+                }
+                else -> {
+                    println("Error: no such notification type found")
+                }
             }
         }
     }
@@ -52,10 +60,19 @@ class FCMService : FirebaseMessagingService() {
 
         NotificationManagerCompat.from(this).notify(Random.nextInt(100_000), notification)
     }
-}
 
-enum class Action {
-    LIKE
+    private fun handlePost(post: Post) {
+        val notification = NotificationCompat.Builder(this, channelId)
+            .setSmallIcon(R.drawable.ic_notification)
+            .setContentTitle(getString(R.string.notification_new_post, post.postAuthor))
+            .setContentText(null)
+            .setLargeIcon(null)
+            .setStyle(NotificationCompat.BigTextStyle()
+                .bigText(post.text))
+            .build()
+
+        NotificationManagerCompat.from(this).notify(Random.nextInt(100_000), notification)
+    }
 }
 
 data class Like(
@@ -63,4 +80,9 @@ data class Like(
     val userName: String,
     val postId: Int,
     val postAuthor: String,
+)
+
+data class Post(
+    val postAuthor: String,
+    val text: String,
 )
